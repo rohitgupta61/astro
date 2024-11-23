@@ -1,6 +1,11 @@
-import datetime
 import streamlit as st
 from langchain_openai import ChatOpenAI
+
+
+from datetime import datetime
+
+# Get today's date in a readable format
+today_date = datetime.now().strftime("%Y-%m-%d")
 
 # Set up the header
 st.header("Astrology Chat")

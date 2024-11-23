@@ -1,7 +1,5 @@
 import streamlit as st
-from langchain_openai import ChatOpenAI
-
-
+from langchain.chat_models import ChatOpenAI
 from datetime import datetime
 
 # Get today's date in a readable format
@@ -16,10 +14,6 @@ if "conversation" not in st.session_state:
 
 # Configure the LLM model
 model = ChatOpenAI(model="gpt-4o-mini", temperature=0.7)
-
-# Get today's date in a readable format
-today_date = datetime.now().strftime("%Y-%m-%d")
-
 
 astrologer_role = f"""
 You are a skilled astrologer specializing in Vedic astrology. Your role is to provide accurate and thoughtful responses to people's questions.
@@ -57,9 +51,39 @@ if user_prompt:
     # Save the question and response to session state
     st.session_state.conversation.append({"user": user_prompt, "bot": response.content})
 
+# Custom CSS for styling chat bubbles
+st.markdown("""
+    <style>
+        .chat-bubble {
+            padding: 10px;
+            margin: 5px;
+            border-radius: 10px;
+            max-width: 70%;
+        }
+        .user-bubble {
+            background-color: #dcf8c6;
+            align-self: flex-end;
+            text-align: right;
+        }
+        .bot-bubble {
+            background-color: #f1f0f0;
+            align-self: flex-start;
+            text-align: left;
+        }
+        .chat-container {
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
+""", unsafe_allow_html=True)
+
 # Display the conversation history
 if st.session_state.conversation:
-    st.write("### Conversation History:")
     for chat in st.session_state.conversation:
-        st.markdown(f"**You:** {chat['user']}")
-        st.markdown(f"**Astrologer:** {chat['bot']}")
+        st.markdown(
+            f'<div class="chat-container">'
+            f'<div class="chat-bubble bot-bubble"><b>Astrologer:</b> {chat["bot"]}</div>'
+            f'<div class="chat-bubble user-bubble"><b>You:</b> {chat["user"]}</div>'
+            f'</div>',
+            unsafe_allow_html=True,
+        )

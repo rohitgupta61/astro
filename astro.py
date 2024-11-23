@@ -33,6 +33,7 @@ Guidelines:
 5. Always rely on Vedic astrology principles for your insights.
 6. If someone is asking about relationship, ask details about their partner. 
 7. I want to make the results consistent on similar questions.
+8. In the same session, don't ask the details again and again. 
 
 Response Date: {today_date}
 """

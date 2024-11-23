@@ -1,5 +1,5 @@
 import streamlit as st
-from langchain.chat_models import ChatOpenAI
+from langchain_openai import ChatOpenAI
 from datetime import datetime
 
 # Get today's date in a readable format
@@ -61,12 +61,12 @@ st.markdown("""
             max-width: 70%;
         }
         .user-bubble {
-            background-color: #dcf8c6;
+            background-color: #000000;
             align-self: flex-end;
             text-align: right;
         }
         .bot-bubble {
-            background-color: #f1f0f0;
+            background-color: #000000;
             align-self: flex-start;
             text-align: left;
         }

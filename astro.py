@@ -88,8 +88,8 @@ if st.session_state.conversation:
     for chat in st.session_state.conversation:
         st.markdown(
             f'<div class="chat-container">'
-            f'<div class="chat-bubble bot-bubble"><b>Astrologer:</b> {chat["bot"]}</div>'
             f'<div class="chat-bubble user-bubble"><b>You:</b> {chat["user"]}</div>'
+            f'<div class="chat-bubble bot-bubble"><b>Astrologer:</b> {chat["bot"]}</div>'
             f'</div>',
             unsafe_allow_html=True,
         )

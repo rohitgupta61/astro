@@ -40,7 +40,7 @@ Guidelines:
 """
 
 # Chat input for user's question
-user_prompt = st.chat_input("Ask your question")
+user_prompt = st.chat_input("Ask")
 
 if user_prompt:
     # Build the prompt with the astrologer role and conversation history
